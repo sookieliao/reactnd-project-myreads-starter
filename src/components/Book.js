@@ -1,7 +1,11 @@
 import React from "react";
 import ShelfSelector  from "./ShelfSelectors";
 
-function Book({book, update}) {
+function Book({book, update, booksInShelves}) {
+  if (booksInShelves && booksInShelves.filter((b) => b.id === book.id ).length > 0){
+    let shelf = booksInShelves.filter((b) => b.id == book.id)[0].shelf;
+    book.shelf = shelf;
+  }
   return(
       <li key={book.id}>
         <div className="book">

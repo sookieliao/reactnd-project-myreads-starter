@@ -7,7 +7,7 @@ function Shelf({books, shelf, update}) {
           <div className="bookshelf-books">
             <ol className="books-grid">
               {books.filter((book)=> book.shelf === shelf)
-                    .map((book) => <Book book={book} update={update}/>)
+                    .map((book) => <Book book={book} key={book.id} update={update}/>)
               }
             </ol>
           </div>

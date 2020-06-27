@@ -33,9 +33,8 @@ class Main extends React.Component {
     BooksAPI.update(book, shelf).then(() =>{
       book.shelf = shelf;
       BooksAPI.getAll().then(results =>{
-        this.setState({books: results});
-        this.setState({searchQuery: "", searchResults: []})
-        this.props.history.push("/");
+        this.setState({books: results, searchQuery: "", searchResults: []}, 
+        () => this.props.history.push("/"))
       });
     });
   };
@@ -44,8 +43,6 @@ class Main extends React.Component {
     this.setState( {searchQuery}, () => {
       this.updateResults();
     });
-
-    console.log(this.state.searchQuery);
   }
 
   updateResults() {
@@ -62,14 +59,13 @@ class Main extends React.Component {
     else{
       this.setState({searchResults:[]});
     }
-    console.log('updated result', this.state.searchResults)
   }
 
   render() {
     return (
       <Switch>
-        <Route path="/search" component={ () => <SearchPage updateBook={this.updateBook} updateQuery={this.updateQuery} searchResults={this.state.searchResults} searchQuery={this.state.searchQuery} />} />
-        <Route path="/" component={ () => <DisplayShelves books={this.state.books} update={this.updateBook}/>} /> 
+        <Route path="/search" component={ () => <SearchPage updateBook={this.updateBook} updateQuery={this.updateQuery} searchResults={this.state.searchResults} searchQuery={this.state.searchQuery} booksInShelves={this.state.books} />} />
+        <Route path="/" component={ () => <DisplayShelves books={this.state.books} update={this.updateBook} />} /> 
         <Redirect to="/" />
         
       </Switch>
