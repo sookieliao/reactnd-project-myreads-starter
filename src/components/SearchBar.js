@@ -8,7 +8,7 @@ class SearchBar extends Component {
         super(props);
     
         this.state= {
-          query: ''
+          query: this.props.searchQuery
         };
     
         this.handleChange = this.handleChange.bind(this);
