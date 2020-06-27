@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import * as BooksAPI from '../BooksAPI'
+import React from 'react';
 import Book  from "./Book";
 import SearchBar from "./SearchBar";
 
@@ -8,7 +7,7 @@ function SearchPage(props) {
   const ShowCase = ({results, updateBook}) => {
     return(
       <ol className="books-grid">      
-        { results.map((book) => <Book book={book} update={updateBook}/> )}
+        { results.map((book) => <Book book={book} key={book.id} update={updateBook}/> )}
       </ol>
     )
   };

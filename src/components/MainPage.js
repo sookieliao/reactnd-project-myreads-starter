@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from '../BooksAPI'
 import SearchPage from './SearchPage';
 import DisplayShelves from './DisplayShelves';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import '../App.css'
 
 class Main extends React.Component {
@@ -13,7 +13,7 @@ class Main extends React.Component {
     this.state = {
       books: [],
       searchQuery: '',
-      searchResults: []
+      searchResults: [],
     };
 
     this.updateBook = this.updateBook.bind(this);
@@ -34,6 +34,8 @@ class Main extends React.Component {
       book.shelf = shelf;
       BooksAPI.getAll().then(results =>{
         this.setState({books: results});
+        this.setState({searchQuery: "", searchResults: []})
+        this.props.history.push("/");
       });
     });
   };
@@ -75,4 +77,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default withRouter(Main);
