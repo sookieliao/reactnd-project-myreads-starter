@@ -1,5 +1,5 @@
 import React from "react";
-import ShelfOptions  from "./ShelfSelectors";
+import ShelfSelector  from "./ShelfSelectors";
 
 function Book({book, update}) {
   return(
@@ -10,7 +10,7 @@ function Book({book, update}) {
               <img src={book.imageLinks.thumbnail} alt={book.title} name={book.title} width="128px" height="193px" />
             </div>
             <div className="book-shelf-changer">
-              <ShelfOptions book={book} update={update} />
+              <ShelfSelector book={book} update={update} />
             </div>
           </div>
           <div className="book-title">{book.title}</div>

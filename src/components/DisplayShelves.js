@@ -4,7 +4,7 @@ import Shelf from './Shelf';
 import * as ShelfTypes from '../shared/ShelfTypes';
 
 
-function DisplayShelfs(props) {
+function DisplayShelves(props) {
 
     return (
         <div className="list-books">
@@ -39,4 +39,4 @@ function DisplayShelfs(props) {
 
 }
 
-export default DisplayShelfs;
+export default DisplayShelves;
