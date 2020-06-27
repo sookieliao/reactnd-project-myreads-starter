@@ -30,7 +30,11 @@ export const update = (book, shelf) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ shelf })
-  }).then(res => res.json())
+  }).then(res => {
+      let d = res.json();
+      console.log(d);
+      return d; 
+    })
 
 export const search = (query) =>
   fetch(`${api}/search`, {
